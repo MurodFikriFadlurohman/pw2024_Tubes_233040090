@@ -1,0 +1,117 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: aliceblue;
+}
+.content {
+  padding-top: 80px;
+  width: 100%;
+}
+
+/* Paragraf */
+.paragraf h1 {
+  color: black;
+  margin: 70px auto;
+  text-align: center;
+}
+
+/* Conten 2 */
+.conten2 {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90%;
+  margin: 90px auto;
+}
+
+.conten2 .card {
+  width: 300px;
+  border-radius: 15px;
+  border: none;
+  text-align: center;
+  background-color: transparent;
+  margin-top: -50px;
+}
+
+.conten3 {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90%;
+  margin: -100px auto;
+}
+
+.conten3 .card {
+  width: 300px;
+  background-color: transparent;
+  border: none;
+  border-radius: 15px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* Conten 4 */
+.conten4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3eeee;
+  margin-top: 200px;
+  padding: 40px;
+}
+
+.card-1 {
+  margin: auto;
+  text-align: center;
+}
+
+.conten4 .card-1 img {
+  border-radius: 15px;
+  box-shadow: 3px 3px 3px 3px rgb(173, 173, 173);
+}
+
+.conten4 .card-1 h4 {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+/* Akhir Conten 4 */
+
+/* About */
+.about {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-2 {
+  width: 500px;
+  margin-top: 40px;
+  margin-left: 20px;
+  padding: 20px;
+}
+
+.card2-body {
+  padding: 30px;
+}
+
+.card2-body .h5 {
+  text-align: center;
+  font-size: 30px;
+  padding-bottom: 25px;
+}
+
+.footer {
+  text-align: center;
+  background-color: #f3eeee;
+  height: 25px;
+  /* border: 2px solid black; */
+}
+
+.footer p {
+  font-size: 15px;
+  padding-top: 3px;
+}
+/* Akhir about */

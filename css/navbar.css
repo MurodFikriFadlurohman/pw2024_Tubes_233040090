@@ -2,8 +2,9 @@
   font-family: 'Acer';
   src: url(../font/AcerSupplement-wOpZ.ttf) format('truetype');
 }
+
 body {
-  height: 4000px;
+  min-height: 100vh;
 }
 
 .container .acer {
@@ -18,7 +19,8 @@ body {
 
 /* Navbar */
 nav {
-  background-color: #202020;
+  background-color: #f1fbff;
+  height: 79px;
 }
 .navbar-nav a {
   color: #80c343;
@@ -27,13 +29,13 @@ nav {
   font-weight: 500;
 }
 
-.navbar-dark .navbar-brand:focus,
-.navbar-dark .navbar-brand:hover {
-  color: #fffef7;
+.navbar-nav .nav-item .nav-link {
+  /* border: 2px solid red; */
+  color: black;
 }
 
-.navbar-dark .navbar-nav .navbar-link {
-  color: #f1fbff;
+.navbar-nav .nav-item .nav-link:hover {
+  color: #80c343;
 }
 
 .w-100 {
@@ -70,7 +72,6 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: black; */
 }
 
 .search input {
@@ -78,7 +79,7 @@ nav {
   width: 250px;
   height: 30px;
   border-radius: 50px;
-  border: 3px solid #fffef7;
+  border: 3px solid rgb(204, 204, 204);
 }
 
 .search {
@@ -88,7 +89,7 @@ nav {
 
 .search-icon {
   padding: 10px;
-  color: #fffef7;
+  color: black;
   cursor: pointer;
   margin-top: 5px;
 }
