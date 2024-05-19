@@ -65,7 +65,7 @@
       <div class="card-body">
         <h5 class="card-title">Aspire</h5>
         <p class="card-text"></p>
-        <a href="#" class="btn btn-secondary">Lihat Detail</a>
+        <a href="detailAspire.php" class="btn btn-secondary">Lihat Detail</a>
       </div>
     </div>
     <div class="card">

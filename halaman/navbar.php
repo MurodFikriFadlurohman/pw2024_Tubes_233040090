@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Artsey Studio</title>
+  <title>Navbar</title>
   <!-- Css -->
   <link rel="stylesheet" href="../css/navbar.css" />
 
@@ -28,6 +28,7 @@
 </head>
 
 <body style="background-color: #d8d2d2;">
+
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top" style="font-family: Josefin Sans, sans-serif;">
     <div class="container">
@@ -49,7 +50,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto gap-3">
           <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" href="utama.php">Home</a>
           </li>
 
           <li class="nav-item">

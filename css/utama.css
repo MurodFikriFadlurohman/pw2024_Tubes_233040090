@@ -11,6 +11,10 @@ body {
   width: 100%;
 }
 
+.w-100 {
+  height: 90vh;
+}
+
 /* Paragraf */
 .paragraf h1 {
   color: black;
