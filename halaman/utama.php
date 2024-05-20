@@ -73,7 +73,7 @@
       <div class="card-body">
         <h5 class="card-title">swift</h5>
         <p class="card-text"></p>
-        <a href="#" class="btn btn-secondary">Lihat Detail</a>
+        <a href="detailSwift.php" class="btn btn-secondary">Lihat Detail</a>
       </div>
     </div>
     <div class="card">
@@ -81,7 +81,7 @@
       <div class="card-body">
         <h5 class="card-title">Gaming</h5>
         <p class="card-text"></p>
-        <a href="#" class="btn btn-secondary">Lihat Detail</a>
+        <a href="detailGaming.php" class="btn btn-secondary">Lihat Detail</a>
       </div>
     </div>
   </div>
@@ -94,15 +94,16 @@
         <div class="card-body">
           <h5 class="card-title">Nitro</h5>
           <p class="card-text"></p>
-          <a href="#" class="btn btn-secondary">Lihat Detail</a>
+          <a href="detailNitro.php" class="btn btn-secondary">Lihat Detail</a>
         </div>
       </div>
+
       <div class="card">
         <img src="../image/spin2.png" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Spin</h5>
           <p class="card-text"></p>
-          <a href="#" class="btn btn-secondary">Lihat Detail</a>
+          <a href="detailSpin.php" class="btn btn-secondary">Lihat Detail</a>
         </div>
       </div>
     </div>
