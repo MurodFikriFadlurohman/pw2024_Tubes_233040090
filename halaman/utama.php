@@ -1,3 +1,10 @@
+<?php 
+session_start();
+require "../function/function.php";
+
+$series = query("SELECT * FROM kategori");
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -13,7 +20,7 @@
   <link rel="stylesheet" href="../css/utama.css">
 </head>
 
-<body>
+<body class="bg-white">
   <?php 
       require "navbar.php"
     ?>
@@ -60,63 +67,27 @@
 
   <!-- Conten 2 -->
   <div class="conten2">
+    <?php foreach ($series as $srs) : ?>
     <div class="card">
-      <img src="../image/aspire7.png" class="card-img-top" alt="...">
+      <img src="../image/<?= $srs["gambar"];?>" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Aspire</h5>
-        <p class="card-text"></p>
-        <a href="detailAspire.php" class="btn btn-secondary">Lihat Detail</a>
+        <h5 class="card-title"><?= $srs["nama"];?></h5>
+        <a href="detail.php?id=<?=$srs["id"] ?>" class="btn btn-secondary">Lihat Detail</a>
       </div>
     </div>
-    <div class="card">
-      <img src="../image/swift2.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">swift</h5>
-        <p class="card-text"></p>
-        <a href="detailSwift.php" class="btn btn-secondary">Lihat Detail</a>
-      </div>
-    </div>
-    <div class="card">
-      <img src="../image/predator2.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Gaming</h5>
-        <p class="card-text"></p>
-        <a href="detailGaming.php" class="btn btn-secondary">Lihat Detail</a>
-      </div>
-    </div>
+    <?php endforeach; ?>
   </div>
   < <!-- Akhir Conten 2 -->
 
-    <!-- Conten 3 -->
-    <div class="conten3">
-      <div class="card">
-        <img src="../image/nitro2.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Nitro</h5>
-          <p class="card-text"></p>
-          <a href="detailNitro.php" class="btn btn-secondary">Lihat Detail</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="../image/spin2.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Spin</h5>
-          <p class="card-text"></p>
-          <a href="detailSpin.php" class="btn btn-secondary">Lihat Detail</a>
-        </div>
-      </div>
-    </div>
-    <!-- Akhir Conten 3  -->
-
     <!-- Conten 4 -->
-    <div class="conten4">
+    <div class=" conten4">
       <div class="card-1" style="width: 18rem;">
         <img src="../image/Windows 11.jpeg" class="card-img-top" alt="...">
         <div class="card-body">
           <h4>Memperkenalkan Windows 11</h4>
           <p class=" card-text">Windows 11 menghadirkan berbagai peningkatan dan fitur baru yang dirancang untuk
-            meningkatkan pengalaman pengguna. Sebelum mengupgrade, pastikan perangkat Anda memenuhi persyaratan sistem
+            meningkatkan pengalaman pengguna. Sebelum mengupgrade, pastikan perangkat Anda memenuhi persyaratan
+            sistem
             dan pelajari lebih lanjut tentang fitur-fiturnya</p>
         </div>
       </div>
@@ -126,7 +97,8 @@
         <div class="card-body">
           <h4>Game Pass</h4>
           <p class=" card-text">Game Pass di Windows 11 acer adalah pilihan yang tepat bagi para gamer PC yang ingin
-            mengakses pustaka game yang luas dengan harga yang terjangkau. Dengan berbagai fitur dan game berkualitas
+            mengakses pustaka game yang luas dengan harga yang terjangkau. Dengan berbagai fitur dan game
+            berkualitas
             tinggi, Game Pass menawarkan pengalaman bermain game yang tak terlupakan.</p>
         </div>
 
@@ -135,7 +107,8 @@
         <img src="../image/orang.jpeg" class="card-img-top" alt="...">
         <div class="card-body">
           <h4>Windows 11 pro</h4>
-          <p class=" card-text">Windows 11 Pro adalah sistem operasi yang kuat dan aman yang dirancang untuk memenuhi
+          <p class=" card-text">Windows 11 Pro adalah sistem operasi yang kuat dan aman yang dirancang untuk
+            memenuhi
             kebutuhan bisnis dan profesional. Jika Anda memerlukan fitur keamanan dan manajemen perangkat tambahan,
             Windows 11 Pro adalah pilihan yang tepat. Namun, jika Anda pengguna rumahan dengan kebutuhan komputasi
             dasar, Windows 11 standar mungkin lebih sesuai.</p>
@@ -150,7 +123,8 @@
         <div class="card2-body">
           <h5 class="card-title h5">About Us</h5>
           <p class="card-text">Acer Web adalah situs web yang memaparkan penjualan laptop Acer terbaru dan terlengkap
-            di Indonesia. yang menawarkan berbagai macam pilihan laptop untuk memenuhi kebutuhan Anda, mulai dari laptop
+            di Indonesia. yang menawarkan berbagai macam pilihan laptop untuk memenuhi kebutuhan Anda, mulai dari
+            laptop
             untuk penggunaan sehari-hari, seperti browsing dan mengetik, hingga laptop gaming berperforma tinggi dan
             laptop tipis dan ringan yang sempurna untuk mobilitas.</p>
         </div>

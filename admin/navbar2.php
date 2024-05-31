@@ -27,7 +27,7 @@
 
 </head>
 
-<body style="background-color: #d8d2d2;">
+<body>
 
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top" style="font-family: Josefin Sans, sans-serif;">
@@ -35,12 +35,12 @@
       <a href="" class="text-decoration-none acer">Acer</a>
 
       <!-- Search -->
-      <form action="">
+      <!-- <form action="">
         <div class="search">
           <label class="search-icon" for="search"><i class='bx bx-search'></i></label>
           <input type="search" name="search" placeholder="search" id="search">
         </div>
-      </form>
+      </form> -->
       <!-- Search -->
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -50,7 +50,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto gap-3">
           <li class="nav-item">
-            <a class="nav-link" href="utama.php">Home</a>
+            <a class="nav-link" href="admin.php">Home</a>
           </li>
 
           <li class="nav-item">
@@ -58,11 +58,11 @@
           </li>
 
           <li class="nav-item">
-            <?php if(isset($_SESSION['login'])) :?>
-            <a class="nav-link" href="logout.php">Logout</a>
-            <?php else : ?>
-            <a class="nav-link" href="login.php">Login</a>
-            <?php endif; ?>
+            <a class="nav-link" href="kategori.php">Kategori</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="../halaman/logout.php">Logout</a>
           </li>
         </ul>
       </div>

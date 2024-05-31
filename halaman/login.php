@@ -1,3 +1,12 @@
+<?php 
+session_start();
+
+require '../function/function.php';
+if(isset($_POST['login'])) {
+  $login = login($_POST);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,12 +30,6 @@
     <div class="form-container sign-up">
       <form>
         <h1>Create Account</h1>
-        <div class="social-icons">
-          <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-          <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-          <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
-        </div>
         <span>Enter your fullname and username</span>
         <input type="text" placeholder="fullname">
         <input type="username" placeholder="username">
@@ -34,21 +37,27 @@
         <button>Sign Up</button>
       </form>
     </div>
+
+    <!-- Sing-in -->
     <div class="form-container sign-in">
-      <form>
+      <form action="" method="POST">
         <h1>Sign In</h1>
+        <?php if(isset($login['error'])) : ?>
+        <p>username / password salah</p>
+        <?php endif; ?>
         <span>enter your username and password</span>
-        <input type="username" placeholder="username">
-        <input type="password" placeholder="Password">
-        <button>Sign In</button>
+        <input type="text" name="username" placeholder="username" autocomplete="off" value="admin" required>
+        <input type="password" name="password" placeholder="Password" value="1234" required>
+        <button type="submit" name="login">Sign in</button>
       </form>
     </div>
-    <div class="toggle-container">
+
+    <div class=" toggle-container">
       <div class="toggle">
         <div class="toggle-panel toggle-left">
           <h1>Welcome Back!</h1>
           <p>Masukkan detail pribadi Anda untuk melihat semua fitur situs</p>
-          <button class="hidden" id="login">Sign In</button>
+          <button class="hidden" id="login">Sign-in</button>
         </div>
         <div class="toggle-panel toggle-right">
           <h1>Hello, Friend</h1>

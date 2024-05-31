@@ -1,0 +1,27 @@
+.container-1 {
+  width: 980px;
+  margin: auto;
+  /* background-color: black; */
+}
+
+.container-1 h2 {
+  margin-top: 110px;
+}
+
+.kotak {
+  border: 2px solid red;
+}
+
+.summary-kategori {
+  background-color: #0a6b4a;
+  border-radius: 15px;
+}
+
+.summary-produk {
+  background-color: #0a516b;
+  border-radius: 15px;
+}
+
+.no-decoration {
+  text-decoration: none;
+}
