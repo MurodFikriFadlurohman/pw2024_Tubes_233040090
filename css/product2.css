@@ -1,7 +1,19 @@
+body {
+  background-color: #eef7ff !important;
+}
+
 .container-1 {
   width: 500px;
-  margin-left: 140px;
+  background-color: #eef7ff !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
+  margin-left: 150px;
   margin-top: 120px;
+}
+
+.container-1 h3 {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .container-2 {
@@ -10,7 +22,7 @@
 }
 
 .container-2 h2 {
-  margin-top: 50px;
+  margin-top: 150px;
 }
 
 .container-2 .table {
@@ -23,4 +35,9 @@
 
 form div {
   margin-bottom: 10px;
+}
+
+.margin .margin2 {
+  margin-top: -30px;
+  margin-bottom: 60px;
 }

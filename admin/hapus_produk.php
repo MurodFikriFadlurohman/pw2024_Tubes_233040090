@@ -6,9 +6,9 @@ if(!isset($_GET['id'])){
   exit;
 }
 
-$id = $_GET['id'];
+$product_id = $_GET['id'];
 
-if( hapus($id) > 0){
+if( hapus_produk($product_id) > 0){
   echo "<script>
           alert('data berhasil dihapus');
           document.location.href = 'admin.php';

@@ -17,7 +17,7 @@ function query($query) {
   return $rows;
 }
 
-// Login
+// Login 
 function login($data)
 {
   $conn = koneksi();
@@ -25,30 +25,32 @@ function login($data)
   $username = htmlspecialchars ($data['username']);
   $password = htmlspecialchars ($data['password']);
   $result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
-
+  
+  
   if (mysqli_num_rows($result)) 
   {  
-    $role =  query("SELECT role FROM user WHERE username = '$username'")[0]["role"];
-    $_SESSION["login"] = true;
-    $_SESSION["username"] = $username;
-    
-    if ($role === "admin"){
-      header ("location: ../admin/admin.php");
-      exit;
-    } else {
-      header ("location: ../halaman/utama.php");
-      exit;
+    $row = mysqli_fetch_assoc($result);
+    if(password_verify($password, $row["Password"])) {
+      
+      $role =  query("SELECT role FROM user WHERE username = '$username'")[0]["role"];
+      $_SESSION["login"] = true;
+      $_SESSION["username"] = $username;
+      
+      if ($role === "admin"){
+        header ("location: ../admin/admin.php");
+        exit;
+      } else {
+        header ("location: ../halaman/utama.php");
+        exit;
+      }
     }
-    
-    
-  } else {
-    return [
-      'error' => true,
-      'pesan' => 'Username / Password salah!' 
-    ];
   }
+  return [
+    'error' => true,
+    'pesan' => 'Username / Password salah!' 
+  ];
 }
-// akhir login
+// Akhir Login 
 
 // tambah data
 function tambah($data)
@@ -99,34 +101,28 @@ function ubah($data)
 // Akhir Ubah
 
 // Registrasi
-function registrasi($data) {
-  global $conn;
+function register($data) {
+  $conn = koneksi();
 
-  $username = ucwords(stripslashes($data["username"]));
-  $password1 = mysqli_real_escape_string($conn, $data["password1"]);
-  $password2 = mysqli_real_escape_string($conn, $data["password2"]);
+  $username = strtolower(stripslashes($data["username"]));
+  $password = mysqli_real_escape_string($conn, $data["password"]);
 
-  if($password1 !== $password2) {
-      echo "<script>alert('Konfirmasi password tidak sesuai')</script>";
-      return false;
-  }
-
-  $result = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'");
+  $result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");
   if(mysqli_fetch_assoc($result)) {
-      echo "<script>alert('Email sudah terdaftar')</script>";
+      echo "<script>alert( 'user sudah terdaftar')</script>";
       return false;
   }
 
-  $result = mysqli_query($conn, "SELECT * FROM users WHERE email = '$username'");
-  if(mysqli_fetch_assoc($result)) {
-      echo "<script>alert('Username sudah terpakai')</script>";
-      return false;
-  }
+  // $result = mysqli_query($conn, "SELECT * FROM users WHERE email = '$username'");
+  // if(mysqli_fetch_assoc($result)) {
+  //     echo "<script>alert('Username sudah terpakai')</script>";
+  //     return false;
+  // }
 
-  $password1 = password_hash($password1, PASSWORD_DEFAULT);
+  $password = password_hash($password, PASSWORD_DEFAULT);
 
-  mysqli_query($conn, "INSERT INTO users(email, username, password) VALUES ('$email', '$username', '$password1')");
-
+  // tambahkan userbaru ke database
+  mysqli_query($conn, "INSERT INTO user(Username, Password) VALUES ('$username', '$password')");
   return mysqli_affected_rows($conn);
 }
 // Akhir Registrasi
@@ -160,7 +156,6 @@ function tambah_product($data)
 // akhir tambah data produk
 
 // upload gambar
-
   function upload() {
 
     $namaFile = $_FILES['gambar']['name'];
@@ -209,7 +204,7 @@ function tambah_product($data)
 
 // Cari
 function cari($keyword){
-  $query = "SELECT * FROM kategori
+  $query = "SELECT * FROM kategori 
                 WHERE
               nama = '$keyword'
             ";
@@ -217,4 +212,56 @@ function cari($keyword){
 }
 // Akhir cari
 
+// cari 2
+function cari2($keyword){
+  $query = "SELECT * FROM product JOIN Kategori ON Kategori_id = Kategori.id
+                WHERE
+                product.Nama LIKE '%$keyword%'
+            ";
+  return query($query);
+  // var_dump($query);
+}
+// Akhir cari 2
+
+// Ubah_produk
+function ubah_produk($data)
+{
+  $conn = koneksi();
+
+  $id = $data['produk_id'];
+  $nama = htmlspecialchars ($data['nama']);
+  $kategori = htmlspecialchars ($data['kategori']);
+  $harga = htmlspecialchars ($data['harga']);
+  $gambar_lama = $data['gambar_lama'];
+  $spesifikasi = $data['spesifikasi'];
+  
+  
+  if( $_FILES['gambar']['error'] === 4) {
+    $gambar = $gambar_lama;
+} else {
+    $gambar = upload();
+} 
+
+  $query="UPDATE product SET
+            Nama='$nama', 
+            Kategori_id ='$kategori', 
+            Harga='$harga', 
+            Gambar='$gambar', 
+            Spesifikasi='$spesifikasi' 
+          WHERE Product_id = $id
+          ";
+
+  mysqli_query($conn, $query);
+  echo mysqli_error($conn);
+  return mysqli_affected_rows($conn);
+}
+// Akhir Ubah_produk
+
+// Hapus Produk
+function hapus_produk($id){
+  $conn = koneksi();
+  mysqli_query($conn, "DELETE FROM product WHERE Product_id = $id") or die(mysqli_error($conn));
+  return mysqli_affected_rows($conn);
+}
+// Akhir Hapus Produk
 ?>

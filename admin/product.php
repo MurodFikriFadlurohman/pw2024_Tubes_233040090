@@ -14,6 +14,24 @@ if(isset($_POST['tambah'])){
     echo "data gagal ditambahkan!";
   }
 }
+
+// tombol cari
+if(isset($_POST['cari'])) {
+  $produk = cari2($_POST['keyword']);
+}
+
+//sorting
+if(isset($_POST["sort"])){
+  if($_POST["sort"] === "old"){
+  $produk = query("SELECT * FROM product JOIN kategori ON kategori_id = kategori.id ORDER BY Product_id ASC");
+  }
+  
+  if($_POST["sort"] === "new"){
+  $produk = query("SELECT * FROM product JOIN kategori ON kategori_id = kategori.id ORDER BY Product_id DESC");
+  }
+}
+//akhir sorting
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +82,9 @@ if(isset($_POST['tambah'])){
         <label for="spesifikasi" class="mt-1">Spesifikasi</label>
         <textarea name="spesifikasi" id="detail" cols="30" rows="10" class="form-control"></textarea>
       </div>
-      <button type="submit" name="tambah" class="btn btn-primary">tambah</button>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="submit" name="tambah" class="btn btn-success">tambah</button>
+      </div>
     </form>
   </div>
   <!-- Akhir Container 1 -->
@@ -72,7 +92,27 @@ if(isset($_POST['tambah'])){
   <!-- Container 2 -->
   <div class=" container-2">
     <h2 class="text-center">List produk</h2>
-    <table class="table">
+    <div class="container-fluid mt-5 w-50 margin">
+      <form action="" method="POST" class="d-flex margin2">
+        <input class="form-control me-2" type="search" name="keyword" placeholder="Search" autocomplete="off"
+          aria-label="Search">
+        <button class="btn btn-success" type="submit" name="cari">Search</button>
+      </form>
+    </div>
+
+    <form action="" method="POST" class="mt-5">
+      <select id="sort" name="sort" onchange="this.form.submit();">
+        <?php if($_POST["sort"] === "old") : ?>
+        <option value="new">terbaru</option>
+        <option value="old" selected>terlama</option>
+        <?php else : ?>
+        <option value="new" selected>terbaru</option>
+        <option value="old">terlama</option>
+        <?php endif ; ?>
+      </select>
+    </form>
+
+    <table class="table table-striped table-hover table-bordered">
       <thead>
         <tr>
           <th scope="col">No</th>
@@ -91,8 +131,9 @@ if(isset($_POST['tambah'])){
           <td><?= $p['nama']; ?></td>
           <td><?= $p['Harga']; ?></td>
           <td>
-            <a href="" class="badge no-decoration text-bg-warning fs-6">ubah</a> | <a
-              href="hapus_produk.php?id=<?= $p['id']; ?>" onclick="return confirm('Apakah ente yakin nyet!!');"
+            <a href="ubah_produk.php?id=<?= $p['Product_id']; ?>"
+              class="badge no-decoration text-bg-warning fs-6">ubah</a> |
+            <a href="hapus_produk.php?id=<?= $p['Product_id']; ?>" onclick="return confirm('Apakah ente yakin nyet!!');"
               class="badge no-decoration text-bg-danger fs-6">hapus</a>
           </td>
         </tr>

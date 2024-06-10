@@ -1,74 +1,106 @@
-<?php 
+<?php
 session_start();
 
 require '../function/function.php';
-if(isset($_POST['login'])) {
+
+if(isset($_POST['login'])){
   $login = login($_POST);
 }
-?>
 
+if(isset($_POST['register'])){
+  if(register($_POST) > 0){
+    echo "<script>
+            alert('user baru berhasil ditambahkan');
+            document.location.href = 'login.php';
+          </script>";
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Style CSS -->
-  <link rel="stylesheet" href="../css/login.css">
-  <title>login</title>
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="../css/login2.css">
+  <!-- Akhir Link CSS -->
 </head>
 
 <body>
+  <div class="wrapper">
+    <!-- Login -->
+    <div class="form-box login">
+      <h2>Login</h2>
+      <?php if(isset($login['error'])) : ?>
+      <p><?= $login['pesan']; ?></p>
+      <?php endif; ?>
+      <form action="#" method="POST">
+        <div class="input-box">
+          <span class="icon">
+            <ion-icon name="person-outline"></ion-icon>
+          </span>
+          <input type="text" name="username" autocomplete="off" required>
+          <label for="username">username</label>
+        </div>
 
-  <div class="container" id="container">
-    <div class="form-container sign-up">
-      <form>
-        <h1>Create Account</h1>
-        <span>Enter your fullname and username</span>
-        <input type="text" placeholder="fullname">
-        <input type="username" placeholder="username">
-        <input type="password" placeholder="Password">
-        <button>Sign Up</button>
+        <div class="input-box">
+          <span class="icon">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+          </span>
+          <input type="password" name="password" required>
+          <label for="password">password</label>
+        </div>
+        <button type="submit" class="btn" name="login">Login</button>
+        <div class="login-register">
+          <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+        </div>
       </form>
     </div>
+    <!-- Akhir Login -->
 
-    <!-- Sing-in -->
-    <div class="form-container sign-in">
-      <form action="" method="POST">
-        <h1>Sign In</h1>
-        <?php if(isset($login['error'])) : ?>
-        <p>username / password salah</p>
-        <?php endif; ?>
-        <span>enter your username and password</span>
-        <input type="text" name="username" placeholder="username" autocomplete="off" value="admin" required>
-        <input type="password" name="password" placeholder="Password" value="1234" required>
-        <button type="submit" name="login">Sign in</button>
+    <!-- Register -->
+    <div class="form-box register">
+      <h2>Registration</h2>
+      <form action="#" method="POST">
+        <div class="input-box">
+          <span class="icon">
+            <ion-icon name="person-outline"></ion-icon>
+          </span>
+          <input type="text" name="fullname" id="fullname" autocomplete="off" required>
+          <label for="fullname">Fullname</label>
+        </div>
+
+        <div class="input-box">
+          <span class="icon">
+            <ion-icon name="person-outline"></ion-icon>
+          </span>
+          <input type="text" name="username" id="username" autocomplete="off" required>
+          <label for="username">username</label>
+        </div>
+
+        <div class="input-box">
+          <span class="icon">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+          </span>
+          <input type="password" name="password" id="password" autocomplete="off" required>
+          <label for="password">password</label>
+        </div>
+        <button type="submit" class="btn" name="register">Register</button>
+        <div class="login-register">
+          <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+        </div>
       </form>
-    </div>
-
-    <div class=" toggle-container">
-      <div class="toggle">
-        <div class="toggle-panel toggle-left">
-          <h1>Welcome Back!</h1>
-          <p>Masukkan detail pribadi Anda untuk melihat semua fitur situs</p>
-          <button class="hidden" id="login">Sign-in</button>
-        </div>
-        <div class="toggle-panel toggle-right">
-          <h1>Hello, Friend</h1>
-          <p>Daftarkan dengan detail pribadi Anda untuk melihat semua fitur situs</p>
-          <button class="hidden" id="register">Sign Up</button>
-        </div>
-      </div>
     </div>
   </div>
+  <!-- Akhir register -->
 
-  <script src="../js/script.js"></script>
+  <script src="../js/script2.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

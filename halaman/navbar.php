@@ -27,7 +27,7 @@
 
 </head>
 
-<body style="background-color: #d8d2d2;">
+<body>
 
   <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top" style="font-family: Josefin Sans, sans-serif;">
@@ -35,12 +35,12 @@
       <a href="" class="text-decoration-none acer">Acer</a>
 
       <!-- Search -->
-      <form action="">
+      <!-- <form action="">
         <div class="search">
           <label class="search-icon" for="search"><i class='bx bx-search'></i></label>
           <input type="search" name="search" placeholder="search" id="search">
         </div>
-      </form>
+      </form> -->
       <!-- Search -->
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
