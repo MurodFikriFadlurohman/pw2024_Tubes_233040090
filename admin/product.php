@@ -102,12 +102,12 @@ if(isset($_POST["sort"])){
 
     <form action="" method="POST" class="mt-5">
       <select id="sort" name="sort" onchange="this.form.submit();">
-        <?php if($_POST["sort"] === "old") : ?>
-        <option value="new">terbaru</option>
-        <option value="old" selected>terlama</option>
-        <?php else : ?>
+        <?php if($_POST["sort"] === "new") : ?>
         <option value="new" selected>terbaru</option>
         <option value="old">terlama</option>
+        <?php else : ?>
+        <option value="new">terbaru</option>
+        <option value="old" selected>terlama</option>
         <?php endif ; ?>
       </select>
     </form>
@@ -133,7 +133,7 @@ if(isset($_POST["sort"])){
           <td>
             <a href="ubah_produk.php?id=<?= $p['Product_id']; ?>"
               class="badge no-decoration text-bg-warning fs-6">ubah</a> |
-            <a href="hapus_produk.php?id=<?= $p['Product_id']; ?>" onclick="return confirm('Apakah ente yakin nyet!!');"
+            <a href="hapus_produk.php?id=<?= $p['Product_id']; ?>" onclick="return confirm('Apakah anda yakin!!');"
               class="badge no-decoration text-bg-danger fs-6">hapus</a>
           </td>
         </tr>

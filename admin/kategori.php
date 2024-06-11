@@ -96,7 +96,7 @@ if(isset($_POST['cari'])) {
           <!-- <td><img src="../image/<?=$ktr['gambar']; ?>" width="68"></td> -->
           <td>
             <a href="ubah.php?id= <?=$ktr['id']; ?>" class=" badge no-decoration text-bg-warning fs-6">ubah</a> |
-            <a href="hapus.php?id= <?=$ktr['id']; ?>" onclick="return confirm('Apakah ente yakin nyet!!');"
+            <a href="hapus.php?id= <?=$ktr['id']; ?>" onclick="return confirm('Apakah anda yakin!!');"
               class="badge no-decoration text-bg-danger fs-6">hapus</a>
           </td>
         </tr>
